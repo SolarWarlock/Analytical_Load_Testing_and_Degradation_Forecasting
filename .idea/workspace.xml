@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/01_data_prep.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/02_eda.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/03_model.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/degradation/memory_leak.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/load_testing/locustfile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/load_testing/system_monitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Analytical Load Testing and Degradation Forecasting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Analytical Load Testing and Degradation Forecasting.iml" afterDir="false" />
+    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Добавил всё необходимое для развёртывания">
+      <change afterPath="$PROJECT_DIR$/backend/app/degradation/slowdown.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Dockerfile" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -87,6 +76,19 @@
       <option name="presentableId" value="Default" />
       <updated>1774252043009</updated>
     </task>
+    <task id="LOCAL-00001" summary="Добавил всё необходимое для развёртывания">
+      <option name="closed" value="true" />
+      <created>1774274769344</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1774274769344</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Добавил всё необходимое для развёртывания" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил всё необходимое для развёртывания" />
   </component>
 </project>
