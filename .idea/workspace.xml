@@ -1,26 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="" />
+    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/01_data_prep.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/02_eda.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/03_model.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/degradation/memory_leak.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/load_testing/locustfile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/load_testing/system_monitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Analytical Load Testing and Degradation Forecasting.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Analytical Load Testing and Degradation Forecasting.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SolarWarlock&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SolarWarlock/Analytical_Load_Testing_and_Degradation_Forecasting.git&quot;,
+    &quot;accountId&quot;: &quot;8ca5d20c-5e00-49f9-8c0f-be052a47157d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="3BKyQrTgwdkuSuLKCY53sZXRQZV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\54321\Desktop\Univer\6_semester\СП\Статья\Analytical Load Testing and Degradation Forecasting\backend\app" />
+      <recent name="C:\Users\54321\Desktop\Univer\6_semester\СП\Статья\Analytical Load Testing and Degradation Forecasting" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
