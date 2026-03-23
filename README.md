@@ -1,6 +1,6 @@
 Напарнику нужно будет использовать встроенную подсистему Docker, которая выдает статистику исключительно по изолированному контейнеру.
 
 Напарник просто запустит в терминале сбор данных в CSV:
-docker stats fastapi-backend --format "{{.CPUPerc}},{{.MemUsage}}" > load_testing/raw_data/docker_metrics.csv
+while true; do docker stats fastapi-backend --no-stream --format "{{.CPUPerc}},{{.MemUsage}}" >> load_testing/raw_data/docker_metrics.csv; sleep 1; done
 
 Вот теперь архитектура действительно отвечает всем требованиям сложного экспериментального стенда. У нас есть оба инструмента искусственной деградации (память и процессор) и точные, изолированные счетчики для всех 7 метрик, от внешнего p95 до внутреннего Event Loop Lag.
