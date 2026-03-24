@@ -38,8 +38,8 @@ class DegradationUser(HttpUser):
 
     @task(2)  # Слегка увеличили частоту вызова
     def trigger_leak(self):
-        """Ускоренная утечка памяти: теперь по 3 МБ за раз."""
-        self.client.post("/degradation/memory?size_mb=3", name="2_Trigger_Leak")
+        """Ускоренная утечка памяти: теперь по 5 МБ за раз."""
+        self.client.post("/degradation/memory?size_mb=5", name="2_Trigger_Leak")
 
     @task(1)
     def trigger_slowdown(self):
