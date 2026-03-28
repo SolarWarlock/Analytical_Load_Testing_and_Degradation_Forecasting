@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Утечка памяти 8 МБ">
-      <change afterPath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/04_feature_engineering.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/05_train_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/04_feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/04_feature_engineering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analytics/05_train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/05_train_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load_testing/locustfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/load_testing/locustfile.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
     "Python.02_prepare_dataset.executor": "Run",
     "Python.03_target_engineering.executor": "Run",
     "Python.04_feature_engineering.executor": "Run",
+    "Python.05_train_model.executor": "Run",
     "Python.Agregation_EventLoop.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",

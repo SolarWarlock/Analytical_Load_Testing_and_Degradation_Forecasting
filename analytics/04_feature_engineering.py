@@ -3,8 +3,8 @@ import pandas as pd
 # ==========================================
 # КОНФИГУРАЦИЯ
 # ==========================================
-INPUT_FILE = '../docs/6/master_dataset_rul.csv'
-OUTPUT_FILE = '../docs/6/features_dataset_rul.csv'
+INPUT_FILE = '../docs/7/master_dataset_rul.csv'
+OUTPUT_FILE = '../docs/7/features_dataset_rul.csv'
 
 # Базовые метрики, для которых мы будем искать исторические тренды
 TARGET_FEATURES = ['cpu_percent', 'mem_mib', 'lag_p95', 'rps']

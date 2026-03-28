@@ -7,7 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # ==========================================
 # КОНФИГУРАЦИЯ
 # ==========================================
-INPUT_FILE = 'features_dataset_rul.csv'
+INPUT_FILE = '../docs/7/features_dataset_rul.csv'
 
 
 def main():
@@ -75,8 +75,8 @@ def main():
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('rul_prediction_plot.png')
-    print("✅ График сохранен как 'rul_prediction_plot.png'")
+    plt.savefig('../docs/7/rul_prediction_plot.png')
+    print("✅ График сохранен как '../docs/7/rul_prediction_plot.png'")
 
 
 if __name__ == "__main__":
