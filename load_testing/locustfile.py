@@ -1,47 +1,45 @@
-from locust import HttpUser, task, between, events
-import csv
-import os
-
-# Подготавливаем отдельный файл для записи нашей 7-й метрики (Event Loop Lag)
-LAG_LOG_FILE = "load_testing/raw_data/event_loop_lag.csv"
+from locust import LoadTestShape
+import random
+import time
 
 
-@events.test_start.add_listener
-def on_test_start(environment, **kwargs):
-    """Создает файл с заголовками при старте теста."""
-    os.makedirs(os.path.dirname(LAG_LOG_FILE), exist_ok=True)
-    with open(LAG_LOG_FILE, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(["timestamp", "endpoint", "event_loop_lag_sec"])
+class FluctuatingLoadShape(LoadTestShape):
+    """
+    Кастомный профиль стохастической нагрузки для эмуляции реального трафика.
+    """
+    # --- НАСТРОЙКИ ПРОФИЛЯ ---
+    base_users = 200  # Базовый пик пользователей
+    ramp_up_time = 120  # Время (в секундах) для плавного выхода на пик (например, 2 минуты)
+    ramp_up_spawn_rate = 2  # С какой скоростью добавлять пользователей при разогреве
 
+    fluctuation_interval = 15  # Как часто меняем нагрузку (каждые 15 секунд)
+    fluctuation_range = (-15, 15)  # Диапазон случайного отклонения от базового пика
 
-@events.request.add_listener
-def on_request(request_type, name, response_time, response_length, response, context, exception, start_time, url,
-               **kwargs):
-    """Перехватчик: вытаскивает внутреннюю метрику задержки из ответа FastAPI."""
-    if response and hasattr(response, 'headers'):
-        lag = response.headers.get("X-Event-Loop-Lag")
-        if lag:
-            with open(LAG_LOG_FILE, 'a', newline='') as f:
-                writer = csv.writer(f)
-                # Сохраняем метрику для датасета
-                writer.writerow([start_time, name, lag])
+    def __init__(self):
+        super().__init__()
+        self.current_target = 0
+        self.last_fluctuation_time = 0
 
+    def tick(self):
+        """Эта функция вызывается Locust каждую секунду для определения нужного числа юзеров."""
+        run_time = self.get_run_time()
 
-class DegradationUser(HttpUser):
-    wait_time = between(0.1, 0.5)
+        # ФАЗА 1: Плавный разогрев (Ramp-up)
+        if run_time < self.ramp_up_time:
+            # Линейно высчитываем, сколько юзеров должно быть сейчас
+            target = int((run_time / self.ramp_up_time) * self.base_users)
+            return (target, self.ramp_up_spawn_rate)
 
-    @task(1000)
-    def normal_workload(self):
-        """Основная полезная нагрузка."""
-        self.client.get("/workload/normal", name="1_Normal_Workload")
+        # ФАЗА 2: Стохастическое колебание на пике (Fluctuation)
+        # Если с момента последнего изменения прошло больше fluctuation_interval секунд:
+        if run_time - self.last_fluctuation_time > self.fluctuation_interval:
+            # Генерируем случайное отклонение (например, от -15 до +15)
+            delta = random.randint(self.fluctuation_range[0], self.fluctuation_range[1])
+            # Устанавливаем новую цель
+            self.current_target = self.base_users + delta
+            # Запоминаем время изменения
+            self.last_fluctuation_time = run_time
 
-    @task(2)  # Слегка увеличили частоту вызова
-    def trigger_leak(self):
-        """Ускоренная утечка памяти: теперь по 8 МБ за раз."""
-        self.client.post("/degradation/memory?size_mb=8", name="2_Trigger_Leak")
-
-    @task(1)
-    def trigger_slowdown(self):
-        """Новая деградация: постепенно блокирует процессор (увеличивает задержку на 1 мс)."""
-        self.client.post("/degradation/slowdown?step=0.001", name="3_Trigger_Slowdown")
+        # Возвращаем текущую цель и высокую скорость спавна,
+        # чтобы Locust быстро подстроил число юзеров (убил или создал новых)
+        return (self.current_target, 20)

@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Фикс ошибки запуска locust">
+    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Утечка памяти 8 МБ">
+      <change afterPath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/04_feature_engineering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analytics/05_train_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.02_build_master_dataset.executor": "Run",
+    "Python.02_prepare_dataset.executor": "Run",
+    "Python.03_target_engineering.executor": "Run",
+    "Python.04_feature_engineering.executor": "Run",
+    "Python.Agregation_EventLoop.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\54321\Desktop\Univer\6_semester\СП\Статья\Analytical Load Testing and Degradation Forecasting\backend\app" />
@@ -105,13 +114,57 @@
       <option name="project" value="LOCAL" />
       <updated>1774294441783</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Теперь должно умирать медленнее">
+      <option name="closed" value="true" />
+      <created>1774341431157</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774341431157</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Увеличение утечки в locustfile.py и добавление внутренней задержки асинхронного цикла FastAPI">
+      <option name="closed" value="true" />
+      <created>1774343726669</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1774343726669</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Утечка памяти 5 МБ">
+      <option name="closed" value="true" />
+      <created>1774348351365</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1774348351365</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Утечка памяти 8 МБ">
+      <option name="closed" value="true" />
+      <created>1774350155253</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1774350155253</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Утечка памяти 8 МБ">
+      <option name="closed" value="true" />
+      <created>1774351939875</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1774351939875</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавил всё необходимое для развёртывания" />
     <MESSAGE value="Починка формата выходных данных" />
     <MESSAGE value="Фикс ошибки запуска locust" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс ошибки запуска locust" />
+    <MESSAGE value="Теперь должно умирать медленнее" />
+    <MESSAGE value="Увеличение утечки в locustfile.py и добавление внутренней задержки асинхронного цикла FastAPI" />
+    <MESSAGE value="Утечка памяти 5 МБ" />
+    <MESSAGE value="Утечка памяти 8 МБ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Утечка памяти 8 МБ" />
   </component>
 </project>
