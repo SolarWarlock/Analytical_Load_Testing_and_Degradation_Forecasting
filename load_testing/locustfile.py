@@ -23,34 +23,36 @@ def on_request(response_time, response, start_time, name, **kwargs):
 
 
 class DegradationUser(HttpUser):
-    # Увеличили интервал между запросами от одного юзера, чтобы снизить базовый RPS
     wait_time = between(0.5, 1.5)
 
-    @task(1000)
+    # Вероятность 10000. Это 99.9% всего трафика.
+    @task(10000)
     def normal_workload(self):
         self.client.get("/workload/normal", name="1_Normal_Workload")
 
-    @task(2)
+    # Вероятность 5. Вызывается очень редко.
+    # Отправляем int, чтобы FastAPI не ругался (422 error).
+    # Итоговая утечка составит примерно 2-3 МБ в минуту.
+    @task(5)
     def trigger_leak(self):
-        # Гомеопатическая доза: 0.2 МБ за один триггер
-        self.client.post("/degradation/memory?size_mb=0.2", name="2_Trigger_Leak")
+        self.client.post("/degradation/memory?size_mb=1", name="2_Trigger_Leak")
 
-    @task(1)
+    # Вероятность 5. Замедляет Event Loop по чуть-чуть.
+    @task(5)
     def trigger_slowdown(self):
-        # Микроскопический шаг блокировки Event Loop
         self.client.post("/degradation/slowdown?step=0.00005", name="3_Trigger_Slowdown")
 
 
 class FluctuatingLoadShape(LoadTestShape):
     base_users = 200
-    # Растягиваем выход на плато до 10 минут (600 секунд)
     ramp_up_time = 600
     ramp_up_spawn_rate = 1
 
-    # Меняем нагрузку каждые 30 секунд (формируем более длинные волны)
     fluctuation_interval = 30
-    # Разброс от 180 до 220 пользователей
     fluctuation_range = (-20, 20)
+
+    # ЖЕСТКИЙ ЛИМИТ ВРЕМЕНИ: 45 минут (в секундах)
+    time_limit = 45 * 60
 
     def __init__(self):
         super().__init__()
@@ -60,12 +62,14 @@ class FluctuatingLoadShape(LoadTestShape):
     def tick(self):
         run_time = self.get_run_time()
 
-        # Фаза 1: Очень плавный разогрев
+        # --- ИСПРАВЛЕНИЕ: ОСТАНОВКА ТЕСТА ---
+        if run_time > self.time_limit:
+            return None  # Эта команда глушит Locust
+
         if run_time < self.ramp_up_time:
             target = int((run_time / self.ramp_up_time) * self.base_users)
             return (target, self.ramp_up_spawn_rate)
 
-        # Фаза 2: Стохастическое плато
         if run_time - self.last_fluctuation_time > self.fluctuation_interval:
             delta = random.randint(self.fluctuation_range[0], self.fluctuation_range[1])
             self.current_target = self.base_users + delta

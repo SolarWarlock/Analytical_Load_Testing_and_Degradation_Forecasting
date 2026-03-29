@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Фикс загрузки одним пользователм">
-      <change afterPath="$PROJECT_DIR$/analytics/05_train_cross_val.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analytics/06_train_classifier.py" afterDir="false" />
+    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Изменения условий эксперимента">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics/04_feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/04_feature_engineering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/05_train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/05_train_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load_testing/locustfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/load_testing/locustfile.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,8 +164,27 @@
       <option name="project" value="LOCAL" />
       <updated>1774695604455</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Изменения условий эксперимента">
+      <option name="closed" value="true" />
+      <created>1774786096152</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1774786096152</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавил всё необходимое для развёртывания" />
@@ -179,14 +195,15 @@
     <MESSAGE value="Утечка памяти 5 МБ" />
     <MESSAGE value="Утечка памяти 8 МБ" />
     <MESSAGE value="Фикс загрузки одним пользователм" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс загрузки одним пользователм" />
+    <MESSAGE value="Изменения условий эксперимента" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменения условий эксперимента" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/load_testing/locustfile.py</url>
-          <line>5</line>
+          <line>24</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
