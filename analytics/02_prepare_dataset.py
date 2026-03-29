@@ -4,10 +4,10 @@ import numpy as np
 # ==========================================
 # КОНФИГУРАЦИЯ ЭКСПЕРИМЕНТА
 # ==========================================
-LOCUST_FILE = '../docs/7/experiment_7_stats_history.csv'
-EVENT_LOOP_FILE = '../docs/7/event_loop_lag.csv'
-DOCKER_FILE = '../docs/7/docker_metrics.csv'
-OUTPUT_FILE = '../docs/7/master_dataset_rul.csv'
+LOCUST_FILE = '../docs/9/experiment_9_stats_history.csv'
+EVENT_LOOP_FILE = '../docs/9/event_loop_lag.csv'
+DOCKER_FILE = '../docs/9/docker_metrics.csv'
+OUTPUT_FILE = '../docs/9/master_dataset_rul.csv'
 
 # Жесткий порог SLA для определения точки отказа
 FAILURE_THRESHOLD_MS = 2000

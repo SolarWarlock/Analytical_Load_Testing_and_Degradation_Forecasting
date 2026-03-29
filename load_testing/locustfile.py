@@ -23,7 +23,8 @@ def on_request(response_time, response, start_time, name, **kwargs):
 
 
 class DegradationUser(HttpUser):
-    wait_time = between(0.1, 0.5)
+    # Увеличили интервал между запросами от одного юзера, чтобы снизить базовый RPS
+    wait_time = between(0.5, 1.5)
 
     @task(1000)
     def normal_workload(self):
@@ -31,22 +32,25 @@ class DegradationUser(HttpUser):
 
     @task(2)
     def trigger_leak(self):
-        # Оставили 1 МБ для плавной утечки
-        self.client.post("/degradation/memory?size_mb=1", name="2_Trigger_Leak")
+        # Гомеопатическая доза: 0.2 МБ за один триггер
+        self.client.post("/degradation/memory?size_mb=0.2", name="2_Trigger_Leak")
 
     @task(1)
     def trigger_slowdown(self):
-        # Оставили 0.2 мс для плавной блокировки Event Loop
-        self.client.post("/degradation/slowdown?step=0.0002", name="3_Trigger_Slowdown")
+        # Микроскопический шаг блокировки Event Loop
+        self.client.post("/degradation/slowdown?step=0.00005", name="3_Trigger_Slowdown")
 
 
-# Класс стохастической нагрузки ОБЯЗАТЕЛЬНО должен быть в этом же файле
 class FluctuatingLoadShape(LoadTestShape):
     base_users = 200
-    ramp_up_time = 120
-    ramp_up_spawn_rate = 2
-    fluctuation_interval = 15
-    fluctuation_range = (-15, 15)
+    # Растягиваем выход на плато до 10 минут (600 секунд)
+    ramp_up_time = 600
+    ramp_up_spawn_rate = 1
+
+    # Меняем нагрузку каждые 30 секунд (формируем более длинные волны)
+    fluctuation_interval = 30
+    # Разброс от 180 до 220 пользователей
+    fluctuation_range = (-20, 20)
 
     def __init__(self):
         super().__init__()
@@ -55,10 +59,13 @@ class FluctuatingLoadShape(LoadTestShape):
 
     def tick(self):
         run_time = self.get_run_time()
+
+        # Фаза 1: Очень плавный разогрев
         if run_time < self.ramp_up_time:
             target = int((run_time / self.ramp_up_time) * self.base_users)
             return (target, self.ramp_up_spawn_rate)
 
+        # Фаза 2: Стохастическое плато
         if run_time - self.last_fluctuation_time > self.fluctuation_interval:
             delta = random.randint(self.fluctuation_range[0], self.fluctuation_range[1])
             self.current_target = self.base_users + delta
