@@ -38,7 +38,7 @@ class DegradationUser(HttpUser):
         self.client.post("/degradation/memory?size_mb=1", name="2_Trigger_Leak")
 
     # Вероятность 5. Замедляет Event Loop по чуть-чуть.
-    @task(5)
+    @task(15)  # Увеличили частоту вызовов в 3 раза
     def trigger_slowdown(self):
         self.client.post("/degradation/slowdown?step=0.00005", name="3_Trigger_Slowdown")
 
