@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Фикс trigger leak и гарантированное закрытие через 45 минут">
+    <list default="true" id="a3f56990-8120-4394-a018-08c048aceb8a" name="Changes" comment="Заготовки для эксперимента с падением">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/01_data_prep.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/02_prepare_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics/04_feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/04_feature_engineering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/05_train_cross_val.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analytics/05_train_model.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/analytics/06_train_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/analytics/06_train_classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/load_testing/locustfile.py" beforeDir="false" afterPath="$PROJECT_DIR$/load_testing/locustfile.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774796866312</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Заготовки для эксперимента с падением">
+      <option name="closed" value="true" />
+      <created>1774815953051</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1774815953051</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +213,8 @@
     <MESSAGE value="Фикс загрузки одним пользователм" />
     <MESSAGE value="Изменения условий эксперимента" />
     <MESSAGE value="Фикс trigger leak и гарантированное закрытие через 45 минут" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс trigger leak и гарантированное закрытие через 45 минут" />
+    <MESSAGE value="Заготовки для эксперимента с падением" />
+    <option name="LAST_COMMIT_MESSAGE" value="Заготовки для эксперимента с падением" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
