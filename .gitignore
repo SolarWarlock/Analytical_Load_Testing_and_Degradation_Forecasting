@@ -39,5 +39,10 @@ CLAUDE.md
 GEMINI.md
 .gemini/
 
+# Unpublished manuscripts
+*.docx
+*.doc
+
+
 
 
