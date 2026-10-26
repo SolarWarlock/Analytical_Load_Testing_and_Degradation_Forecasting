@@ -1,0 +1,5 @@
+Method,Name,Error,Occurrences
+GET,1_Normal_Workload,"ConnectionAbortedError(10053, 'Программа на вашем хост-компьютере разорвала установленное подключение', None, 10053, None)",1
+GET,1_Normal_Workload,RemoteDisconnected('Remote end closed connection without response'),857
+GET,1_Normal_Workload,"ConnectionRefusedError(10061, '[WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.')",24
+POST,2_Trigger_Leak,RemoteDisconnected('Remote end closed connection without response'),14

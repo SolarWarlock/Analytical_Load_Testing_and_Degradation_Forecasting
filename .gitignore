@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local test runs output
+load_testing/raw_data/*.csv
+!load_testing/raw_data/.gitkeep
+
+# Scratch files
+extract_text.ps1
+paper_summary.txt
+
+# Accidental nested folder
+Analytical Load Testing and Degradation Forecasting/
+
+# AI configs and assistant instructions
+.agents/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.gemini/
+
+
+
