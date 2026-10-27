@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Pytest
         run: |
-          PYTHONPATH=backend pytest backend/tests/ -v
+          PYTHONPATH=backend:. pytest backend/tests/ -v
 
   docker-validate:
     name: Docker Build & Compose Check
