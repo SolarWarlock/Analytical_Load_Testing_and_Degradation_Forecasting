@@ -1,5 +1,6 @@
 import time
 
+
 class SlowdownManager:
     def __init__(self):
         self.delay_sec = 0.0
@@ -15,4 +16,5 @@ class SlowdownManager:
             # Она застопорит весь Event Loop сервера.
             time.sleep(self.delay_sec)
 
-slowdown_manager = SlowdownManager()
+
+slowdown_manager = SlowdownManager()

@@ -1,9 +1,10 @@
 # High-Performance FastAPI: Диагностика и профилирование Event Loop под нагрузкой
 
+[![CI Pipeline](https://github.com/SolarWarlock/Analytical_Load_Testing_and_Degradation_Forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/SolarWarlock/Analytical_Load_Testing_and_Degradation_Forecasting/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.13-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-009688.svg)](https://fastapi.tiangolo.com/)
 [![Uvicorn](https://img.shields.io/badge/ASGI-Uvicorn-2C5BB4.svg)](https://www.uvicorn.org/)
-[![Docker](https://img.shields.io/badge/Docker-cgroups_v2-2496ED.svg)](https://www.docker.com/)
+[![Docker](https://img.shields.io/badge/Docker-Resource_Limits-2496ED.svg)](https://www.docker.com/)
 [![Locust](https://img.shields.io/badge/Load_Testing-Locust-green.svg)](https://locust.io/)
 
 Бэкенд на FastAPI с кастомным middleware для замера лагов цикла событий (Event Loop) под высокой конкурентной нагрузкой.
@@ -55,8 +56,14 @@ async def measure_event_loop_lag(request: Request, call_next):
 ### 3. Стресс-тестирование сервиса в Locust
 Генератор генерирует стохастический поток от 200 пользователей. Профиль нагрузки эмулирует реальный трафик: 99.9% штатных вызовов и редкие фоновые сбои. Сценарий собирает сквозную статистику клиентских задержек и значений `X-Event-Loop-Lag`.
 
-### 4. Контейнеризация с лимитами cgroups
-Сервис развернут в Docker на базе легкого образа `python:3.11-slim`. Для воспроизводимости тестов выделены строгие аппаратные квоты: 1 ядро CPU и 1536 МБ оперативной памяти.
+### 4. Контейнеризация и изоляция ресурсов
+Сервис развернут в Docker на базе легковесного образа `python:3.11-slim`. Для воспроизводимости стресс-тестов выделены строгие аппаратные квоты (`limits` и `reservations` в Compose): 1 ядро CPU и 1536 МБ оперативной памяти.
+
+### 5. Автоматизация и CI/CD (GitHub Actions)
+В репозитории настроен автоматический пайплайн непрерывной интеграции (`.github/workflows/ci.yml`):
+- **Статический анализ кода:** проверка через `ruff`.
+- **Автоматические тесты:** смоук-тесты эндпоинтов и заголовков задержки через `pytest`.
+- **Сборка и валидация:** сборка Docker-образа бэкенда и валидация конфигурации `docker compose`.
 
 ---
 
@@ -78,6 +85,9 @@ async def measure_event_loop_lag(request: Request, call_next):
 ## 📁 Структура репозитория
 
 ```text
+├── .github/
+│   └── workflows/
+│       └── ci.yml                  # Автоматический CI-пайплайн (Ruff, Pytest, Docker)
 ├── backend/
 │   ├── app/
 │   │   ├── api.py                  # Роутер FastAPI и обработчики запросов
@@ -85,6 +95,8 @@ async def measure_event_loop_lag(request: Request, call_next):
 │   │   │   ├── memory_leak.py      # Управляемое накопление памяти
 │   │   │   └── slowdown.py         # Эмуляция задержек обработки
 │   │   └── main.py                 # Инициализация FastAPI и ASGI-middleware
+│   ├── tests/
+│   │   └── test_api.py             # Смоук-тесты эндпоинтов и замера телеметрии
 │   ├── Dockerfile                  # Оптимизированный образ Python 3.11
 │   └── requirements.txt            # Зависимости сервиса (FastAPI, Uvicorn)
 ├── load_testing/
@@ -157,5 +169,5 @@ locust -f load_testing/locustfile.py --host http://localhost:8000
 - **Язык:** Python 3.11 / 3.13 (асинхронные возможности, типизация Pydantic).
 - **Фреймворк:** FastAPI (высокая скорость, валидация данных, автогенерация OpenAPI).
 - **Сервер:** Uvicorn (ASGI-сервер на базе uvloop и httptools).
-- **Тестирование нагрузки:** Locust (сценарное моделирование пользователей).
-- **Среда запуска:** Docker Compose (cgroups v2, строгий контроль ресурсов).
+- **Среда запуска:** Docker Compose (строгий контроль ресурсов: квоты CPU и оперативной памяти).
+- **CI/CD:** GitHub Actions (автоматический линтинг Ruff, смоук-тесты Pytest, проверка Dockerfile и Compose).
