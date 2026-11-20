@@ -50,3 +50,9 @@ jobs:
       - name: Validate Docker Compose Configuration
         run: |
           docker compose -f infrastructure/docker-compose.yml config
+
+      - name: Validate Prometheus Configuration and Alert Rules
+        run: |
+          docker run --rm --entrypoint promtool \
+            -v "${{ github.workspace }}/infrastructure/prometheus:/etc/prometheus:ro" \
+            prom/prometheus:v2.53.0 check config /etc/prometheus/prometheus.yml

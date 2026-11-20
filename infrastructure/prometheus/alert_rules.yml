@@ -1,0 +1,34 @@
+groups:
+  - name: fastapi_degradation_alerts
+    rules:
+      - alert: HighEventLoopLag
+        expr: histogram_quantile(0.95, sum(rate(fastapi_event_loop_lag_seconds_bucket[1m])) by (le)) > 0.05
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High FastAPI event loop lag (p95 > 50ms)"
+          description: "Event loop lag p95 exceeded 50ms for 15s; early sign of degradation before 5xx spike."
+
+      - alert: HighHttpErrorRate
+        expr: |
+          (
+            sum(rate(http_requests_total{status=~"5.."}[1m]))
+            /
+            clamp_min(sum(rate(http_requests_total[1m])), 1)
+          ) > 0.05
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "High HTTP 5xx error rate (> 5%)"
+          description: "More than 5% of FastAPI requests are failing with 5xx responses."
+
+      - alert: FastApiBackendDown
+        expr: up{job="fastapi-backend"} == 0
+        for: 15s
+        labels:
+          severity: critical
+        annotations:
+          summary: "FastAPI backend target is down"
+          description: "Prometheus cannot scrape fastapi-backend:8000/metrics."
